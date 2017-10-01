@@ -4,7 +4,7 @@
         <entry key="management_network" type="String">user</entry>
         <entry key="management_lxc" type="Boolean">true</entry>
     </extensions>
-    <node name="L2-5" type="SIMPLE" subtype="IOSvL2" location="281,254">
+    <node name="L2-6" type="SIMPLE" subtype="IOSvL2" location="281,254">
         <extensions>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="Auto-generate config" type="Boolean">false</entry>
