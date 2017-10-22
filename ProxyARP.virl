@@ -87,14 +87,6 @@ interface GigabitEthernet0/2&#xD;
  negotiation auto&#xD;
  channel-group 2 mode active&#xD;
 !&#xD;
-interface GigabitEthernet1/0&#xD;
- description to host3&#xD;
- switchport trunk encapsulation dot1q&#xD;
- switchport mode access&#xD;
- media-type rj45&#xD;
- negotiation auto&#xD;
- channel-group 2 mode active&#xD;
-!&#xD;
 interface Vlan1&#xD;
  description OOB Management&#xD;
  ip address 10.255.0.108 255.255.0.0&#xD;
@@ -684,7 +676,7 @@ end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.0.6" netPrefixLenV4="30"/>
     </node>
-    <node name="host4" type="SIMPLE" subtype="IOSv" location="649,341">
+    <node name="host4" type="SIMPLE" subtype="IOSv" location="640,328">
         <extensions>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="Auto-generate config" type="Boolean">false</entry>
@@ -872,7 +864,7 @@ end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
     </node>
-    <node name="host2" type="SIMPLE" subtype="IOSv" location="275,336">
+    <node name="host2" type="SIMPLE" subtype="IOSv" location="290,338">
         <extensions>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="Auto-generate config" type="Boolean">false</entry>
