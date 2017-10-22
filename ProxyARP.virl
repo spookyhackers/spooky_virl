@@ -4,156 +4,12 @@
         <entry key="management_network" type="String">user</entry>
         <entry key="management_lxc" type="Boolean">true</entry>
     </extensions>
-    <node name="L2-1" type="SIMPLE" subtype="IOSvL2" location="478,84">
-        <extensions>
-            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
-            <entry key="Auto-generate config" type="Boolean">false</entry>
-            <entry key="config" type="String">!&#xD;
-! Last configuration change at 10:01:45 UTC Sun Oct 1 2017&#xD;
-!&#xD;
-version 15.2&#xD;
-service timestamps debug datetime msec&#xD;
-service timestamps log datetime msec&#xD;
-no service password-encryption&#xD;
-service compress-config&#xD;
-!&#xD;
-hostname iosvl2-1&#xD;
-!&#xD;
-boot-start-marker&#xD;
-boot-end-marker&#xD;
-!&#xD;
-!&#xD;
-enable password cisco&#xD;
-!&#xD;
-no aaa new-model&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-no ip domain-lookup&#xD;
-ip cef&#xD;
-no ipv6 cef&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-spanning-tree mode pvst&#xD;
-spanning-tree extend system-id&#xD;
-!&#xD;
-vlan internal allocation policy ascending&#xD;
-!&#xD;
-! &#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-interface Loopback0&#xD;
- description Loopback&#xD;
- no ip address&#xD;
-!&#xD;
-interface Port-channel2&#xD;
- switchport trunk encapsulation dot1q&#xD;
- switchport mode trunk&#xD;
-!&#xD;
-interface GigabitEthernet0/0&#xD;
- description Mapped to Vlan1 for management&#xD;
- switchport mode access&#xD;
- media-type rj45&#xD;
- negotiation auto&#xD;
-!&#xD;
-interface GigabitEthernet0/1&#xD;
- description to iosv-1&#xD;
- switchport access vlan 2&#xD;
- switchport mode access&#xD;
- media-type rj45&#xD;
- negotiation auto&#xD;
-!&#xD;
-interface GigabitEthernet0/2&#xD;
- description to iosvl2-2&#xD;
- switchport trunk encapsulation dot1q&#xD;
- switchport mode trunk&#xD;
- media-type rj45&#xD;
- negotiation auto&#xD;
- channel-group 2 mode active&#xD;
-!&#xD;
-interface Vlan1&#xD;
- description OOB Management&#xD;
- ip address 10.255.0.108 255.255.0.0&#xD;
-!&#xD;
-ip forward-protocol nd&#xD;
-!&#xD;
-no ip http server&#xD;
-no ip http secure-server&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-!&#xD;
-control-plane&#xD;
-!&#xD;
-banner exec `&#xD;
-**************************************************************************&#xD;
-* IOSv is strictly limited to use for evaluation, demonstration and IOS  *&#xD;
-* education. IOSv is provided as-is and is not supported by Cisco's      *&#xD;
-* Technical Advisory Center. Any use or disclosure, in whole or in part, *&#xD;
-* of the IOSv Software or Documentation to any third party for any       *&#xD;
-* purposes is expressly prohibited except as otherwise authorized by     *&#xD;
-* Cisco in writing.                                                      *&#xD;
-**************************************************************************`&#xD;
-banner incoming `&#xD;
-**************************************************************************&#xD;
-* IOSv is strictly limited to use for evaluation, demonstration and IOS  *&#xD;
-* education. IOSv is provided as-is and is not supported by Cisco's      *&#xD;
-* Technical Advisory Center. Any use or disclosure, in whole or in part, *&#xD;
-* of the IOSv Software or Documentation to any third party for any       *&#xD;
-* purposes is expressly prohibited except as otherwise authorized by     *&#xD;
-* Cisco in writing.                                                      *&#xD;
-**************************************************************************`&#xD;
-banner login `&#xD;
-**************************************************************************&#xD;
-* IOSv is strictly limited to use for evaluation, demonstration and IOS  *&#xD;
-* education. IOSv is provided as-is and is not supported by Cisco's      *&#xD;
-* Technical Advisory Center. Any use or disclosure, in whole or in part, *&#xD;
-* of the IOSv Software or Documentation to any third party for any       *&#xD;
-* purposes is expressly prohibited except as otherwise authorized by     *&#xD;
-* Cisco in writing.                                                      *&#xD;
-**************************************************************************`&#xD;
-!&#xD;
-line con 0&#xD;
- password cisco&#xD;
-line aux 0&#xD;
-line vty 0 4&#xD;
- exec-timeout 720 0&#xD;
- password cisco&#xD;
- login&#xD;
- transport input telnet ssh&#xD;
-!&#xD;
-!&#xD;
-end</entry>
-        </extensions>
-        <interface id="0" name="GigabitEthernet0/1"/>
-        <interface id="1" name="GigabitEthernet0/2"/>
-        <interface id="2" name="GigabitEthernet0/3"/>
-        <interface id="3" name="GigabitEthernet1/0"/>
-    </node>
-    <node name="L2-2" type="SIMPLE" subtype="IOSvL2" location="480,336">
+    <node name="L2-1" type="SIMPLE" subtype="IOSvL2" location="478,88">
         <extensions>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 10:01:46 UTC Sun Oct 1 2017
+! Last configuration change at 09:00:02 UTC Sun Oct 22 2017
 !
 version 15.2
 service timestamps debug datetime msec
@@ -161,7 +17,7 @@ service timestamps log datetime msec
 no service password-encryption
 service compress-config
 !
-hostname iosvl2-2
+hostname iosvl2-1
 !
 boot-start-marker
 boot-end-marker
@@ -217,7 +73,160 @@ interface GigabitEthernet0/0
  negotiation auto
 !
 interface GigabitEthernet0/1
- description to iosv-2
+ description to iosv-1
+ switchport access vlan 2
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ description to iosvl2-2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+ channel-group 2 mode active
+!
+interface GigabitEthernet0/3
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ media-type rj45
+ negotiation auto
+!
+interface Vlan1
+ description OOB Management
+ ip address 10.255.0.108 255.255.0.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login
+ transport input telnet ssh
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+    </node>
+    <node name="L2-2" type="SIMPLE" subtype="IOSvL2" location="480,336">
+        <extensions>
+            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
+            <entry key="Auto-generate config" type="Boolean">false</entry>
+            <entry key="config" type="String">!
+! Last configuration change at 09:00:02 UTC Sun Oct 22 2017
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname L2-2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable password cisco
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+no spanning-tree vlan 1-4094
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ no ip address
+!
+interface Port-channel2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/0
+ description Mapped to Vlan1 for management
+ switchport mode access
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ description host2_gi0_1
  switchport access vlan 2
  switchport mode access
  media-type rj45
@@ -238,6 +247,13 @@ interface GigabitEthernet0/3
  media-type rj45
  negotiation auto
  channel-group 2 mode passive
+!
+interface GigabitEthernet1/0
+ description host4_gi0_1
+ switchport access vlan 3
+ switchport mode access
+ media-type rj45
+ negotiation auto
 !
 interface Vlan1
  description OOB Management
@@ -300,35 +316,25 @@ end</entry>
         <interface id="2" name="GigabitEthernet0/3"/>
         <interface id="3" name="GigabitEthernet1/0"/>
     </node>
-    <node name="host1" type="SIMPLE" subtype="IOSv" location="282,81" ipv4="192.168.0.1">
+    <node name="host1" type="SIMPLE" subtype="IOSvL2" location="308,73">
         <extensions>
-            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
-            <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 10:02:34 UTC Sun Oct 1 2017
+! Last configuration change at 09:00:03 UTC Sun Oct 22 2017
 !
-version 15.6
+version 15.2
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
+service compress-config
 !
-hostname iosv-1
+hostname host1
 !
 boot-start-marker
 boot-end-marker
 !
 !
-enable password cisco
 !
 no aaa new-model
-ethernet lmi ce
-!
-!
-!
-mmi polling-interval 60
-no mmi auto-configure
-no mmi pvc
-mmi snmp-timeout 180
 !
 !
 !
@@ -337,23 +343,15 @@ mmi snmp-timeout 180
 !
 !
 !
-!
-!
-!
-no ip domain lookup
 ip cef
-ipv6 unicast-routing
-ipv6 cef
-!
-multilink bundle-name authenticated
+no ipv6 cef
 !
 !
 !
+spanning-tree mode pvst
+spanning-tree extend system-id
 !
-!
-redundancy
-!
-no cdp run
+vlan internal allocation policy ascending
 !
 ! 
 !
@@ -368,47 +366,23 @@ no cdp run
 !
 !
 !
-interface Loopback0
- description Loopback
+interface Loopback1
  ip address 192.168.0.1 255.255.255.255
 !
 interface GigabitEthernet0/0
- description OOB Management
- ip address 10.255.0.6 255.255.0.0
- duplex auto
- speed auto
  media-type rj45
+ negotiation auto
 !
 interface GigabitEthernet0/1
- description to iosvl2-1
- ip address 10.0.0.5 255.255.255.252
- ip ospf cost 1
- duplex auto
- speed auto
  media-type rj45
-!
-router ospf 1
- passive-interface Loopback0
- network 10.0.0.4 0.0.0.3 area 0
- network 192.168.0.1 0.0.0.0 area 0
-!
-router bgp 1
- bgp router-id 192.168.0.1
- bgp log-neighbor-changes
- neighbor 192.168.0.2 remote-as 1
- neighbor 192.168.0.2 description iBGP peer iosv-2
- neighbor 192.168.0.2 update-source Loopback0
- !
- address-family ipv4
-  network 192.168.0.1 mask 255.255.255.255
-  neighbor 192.168.0.2 activate
- exit-address-family
+ negotiation auto
 !
 ip forward-protocol nd
 !
-!
 no ip http server
 no ip http secure-server
+!
+!
 !
 !
 !
@@ -417,482 +391,60 @@ control-plane
 !
 banner exec `
 **************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
 banner incoming `
 **************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
 banner login `
 **************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
 !
 line con 0
- password cisco
 line aux 0
 line vty 0 4
- exec-timeout 720 0
- password cisco
- login
- transport input telnet ssh
 !
-no scheduler allocate
-!
-end</entry>
-        </extensions>
-        <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.0.5" netPrefixLenV4="30"/>
-    </node>
-    <node name="host3" type="SIMPLE" subtype="IOSv" location="642,84" ipv4="192.168.0.2">
-        <extensions>
-            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
-            <entry key="Auto-generate config" type="Boolean">false</entry>
-            <entry key="config" type="String">!
-! Last configuration change at 10:02:10 UTC Sun Oct 1 2017
-!
-version 15.6
-service timestamps debug datetime msec
-service timestamps log datetime msec
-no service password-encryption
-!
-hostname iosv-2
-!
-boot-start-marker
-boot-end-marker
-!
-!
-enable password cisco
-!
-no aaa new-model
-ethernet lmi ce
-!
-!
-!
-mmi polling-interval 60
-no mmi auto-configure
-no mmi pvc
-mmi snmp-timeout 180
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-no ip domain lookup
-ip cef
-ipv6 unicast-routing
-ipv6 cef
-!
-multilink bundle-name authenticated
-!
-!
-!
-!
-!
-redundancy
-!
-no cdp run
-!
-! 
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-interface Loopback0
- description Loopback
- ip address 192.168.0.2 255.255.255.255
-!
-interface GigabitEthernet0/0
- description OOB Management
- ip address 10.255.0.7 255.255.0.0
- duplex auto
- speed auto
- media-type rj45
-!
-interface GigabitEthernet0/1
- description to iosvl2-2
- ip address 10.0.0.6 255.255.255.252
- ip ospf cost 1
- duplex auto
- speed auto
- media-type rj45
-!
-router ospf 1
- passive-interface Loopback0
- network 10.0.0.4 0.0.0.3 area 0
- network 192.168.0.2 0.0.0.0 area 0
-!
-router bgp 1
- bgp router-id 192.168.0.2
- bgp log-neighbor-changes
- neighbor 192.168.0.1 remote-as 1
- neighbor 192.168.0.1 description iBGP peer iosv-1
- neighbor 192.168.0.1 update-source Loopback0
- !
- address-family ipv4
-  network 192.168.0.2 mask 255.255.255.255
-  neighbor 192.168.0.1 activate
- exit-address-family
-!
-ip forward-protocol nd
-!
-!
-no ip http server
-no ip http secure-server
-!
-!
-!
-!
-control-plane
-!
-banner exec `
-**************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
-banner incoming `
-**************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
-banner login `
-**************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
-!
-line con 0
- password cisco
-line aux 0
-line vty 0 4
- exec-timeout 720 0
- password cisco
- login
- transport input telnet ssh
-!
-no scheduler allocate
-!
-end</entry>
-        </extensions>
-        <interface id="0" name="GigabitEthernet0/1" ipv4="10.0.0.6" netPrefixLenV4="30"/>
-    </node>
-    <node name="host4" type="SIMPLE" subtype="IOSv" location="640,328">
-        <extensions>
-            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
-            <entry key="Auto-generate config" type="Boolean">false</entry>
-            <entry key="config" type="String">!
-! Last configuration change at 10:02:10 UTC Sun Oct 1 2017
-!
-version 15.6
-service timestamps debug datetime msec
-service timestamps log datetime msec
-no service password-encryption
-!
-hostname iosv-2
-!
-boot-start-marker
-boot-end-marker
-!
-!
-enable password cisco
-!
-no aaa new-model
-ethernet lmi ce
-!
-!
-!
-mmi polling-interval 60
-no mmi auto-configure
-no mmi pvc
-mmi snmp-timeout 180
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-no ip domain lookup
-ip cef
-ipv6 unicast-routing
-ipv6 cef
-!
-multilink bundle-name authenticated
-!
-!
-!
-!
-!
-redundancy
-!
-no cdp run
-!
-! 
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-interface Loopback0
- description Loopback
- ip address 192.168.0.2 255.255.255.255
-!
-interface GigabitEthernet0/0
- description OOB Management
- ip address 10.255.0.7 255.255.0.0
- duplex auto
- speed auto
- media-type rj45
-!
-interface GigabitEthernet0/1
- description to iosvl2-2
- ip address 10.0.0.6 255.255.255.252
- ip ospf cost 1
- duplex auto
- speed auto
- media-type rj45
-!
-router ospf 1
- passive-interface Loopback0
- network 10.0.0.4 0.0.0.3 area 0
- network 192.168.0.2 0.0.0.0 area 0
-!
-router bgp 1
- bgp router-id 192.168.0.2
- bgp log-neighbor-changes
- neighbor 192.168.0.1 remote-as 1
- neighbor 192.168.0.1 description iBGP peer iosv-1
- neighbor 192.168.0.1 update-source Loopback0
- !
- address-family ipv4
-  network 192.168.0.2 mask 255.255.255.255
-  neighbor 192.168.0.1 activate
- exit-address-family
-!
-ip forward-protocol nd
-!
-!
-no ip http server
-no ip http secure-server
-!
-!
-!
-!
-control-plane
-!
-banner exec `
-**************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
-banner incoming `
-**************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
-banner login `
-**************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
-!
-line con 0
- password cisco
-line aux 0
-line vty 0 4
- exec-timeout 720 0
- password cisco
- login
- transport input telnet ssh
-!
-no scheduler allocate
 !
 end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
     </node>
-    <node name="host2" type="SIMPLE" subtype="IOSv" location="290,338">
+    <node name="host2" type="SIMPLE" subtype="IOSvL2" location="308,333">
         <extensions>
-            <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
-            <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 10:02:34 UTC Sun Oct 1 2017
+! Last configuration change at 09:00:04 UTC Sun Oct 22 2017
 !
-version 15.6
+version 15.2
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
+service compress-config
 !
-hostname iosv-1
+hostname Switch
 !
 boot-start-marker
 boot-end-marker
 !
 !
-enable password cisco
 !
 no aaa new-model
-ethernet lmi ce
-!
-!
-!
-mmi polling-interval 60
-no mmi auto-configure
-no mmi pvc
-mmi snmp-timeout 180
 !
 !
 !
@@ -901,23 +453,15 @@ mmi snmp-timeout 180
 !
 !
 !
-!
-!
-!
-no ip domain lookup
 ip cef
-ipv6 unicast-routing
-ipv6 cef
-!
-multilink bundle-name authenticated
+no ipv6 cef
 !
 !
 !
+spanning-tree mode pvst
+spanning-tree extend system-id
 !
-!
-redundancy
-!
-no cdp run
+vlan internal allocation policy ascending
 !
 ! 
 !
@@ -932,47 +476,20 @@ no cdp run
 !
 !
 !
-interface Loopback0
- description Loopback
- ip address 192.168.0.1 255.255.255.255
-!
 interface GigabitEthernet0/0
- description OOB Management
- ip address 10.255.0.6 255.255.0.0
- duplex auto
- speed auto
  media-type rj45
+ negotiation auto
 !
 interface GigabitEthernet0/1
- description to iosvl2-1
- ip address 10.0.0.5 255.255.255.252
- ip ospf cost 1
- duplex auto
- speed auto
  media-type rj45
-!
-router ospf 1
- passive-interface Loopback0
- network 10.0.0.4 0.0.0.3 area 0
- network 192.168.0.1 0.0.0.0 area 0
-!
-router bgp 1
- bgp router-id 192.168.0.1
- bgp log-neighbor-changes
- neighbor 192.168.0.2 remote-as 1
- neighbor 192.168.0.2 description iBGP peer iosv-2
- neighbor 192.168.0.2 update-source Loopback0
- !
- address-family ipv4
-  network 192.168.0.1 mask 255.255.255.255
-  neighbor 192.168.0.2 activate
- exit-address-family
+ negotiation auto
 !
 ip forward-protocol nd
 !
-!
 no ip http server
 no ip http secure-server
+!
+!
 !
 !
 !
@@ -981,82 +498,260 @@ control-plane
 !
 banner exec `
 **************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
 banner incoming `
 **************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
 banner login `
 **************************************************************************
-* IOSv - Cisco Systems Confidential                                      *
-*                                                                        *
-* Supplemental End User License Restrictions                             *
-*                                                                        *
-* This IOSv software is provided AS-IS without warranty of any kind.     *
-* Under no circumstances may this software be used separate from         *
-* the Cisco Modeling Labs Software that this software was provided       *
-*  with, or deployed or used as part of a production environment.        *
-*                                                                        *
-* By using the software, you agree to abide by the terms and             *
-* conditions of the Cisco End User License Agreement at                  *
-* http://www.cisco.com/go/eula.                                          *
-*                                                                        *
-* Unauthorized use or distribution of this software is expressly         *
-* prohibited.                                                            *
-**************************************************************************
-`
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
 !
 line con 0
- password cisco
 line aux 0
 line vty 0 4
- exec-timeout 720 0
- password cisco
- login
- transport input telnet ssh
 !
-no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="host3" type="SIMPLE" subtype="IOSvL2" location="674,79">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 09:00:05 UTC Sun Oct 22 2017
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname Switch
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ media-type rj45
+ negotiation auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="host4" type="SIMPLE" subtype="IOSvL2" location="669,331">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 09:00:06 UTC Sun Oct 22 2017
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname Switch
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ media-type rj45
+ negotiation auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+!
 !
 end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
     </node>
     <annotations/>
-    <connection dst="/virl:topology/virl:node[1]/virl:interface[1]" src="/virl:topology/virl:node[3]/virl:interface[1]"/>
     <connection dst="/virl:topology/virl:node[2]/virl:interface[2]" src="/virl:topology/virl:node[1]/virl:interface[2]"/>
     <connection dst="/virl:topology/virl:node[2]/virl:interface[3]" src="/virl:topology/virl:node[1]/virl:interface[3]"/>
-    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[4]"/>
-    <connection dst="/virl:topology/virl:node[5]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[4]"/>
-    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[6]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[6]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[4]"/>
+    <connection dst="/virl:topology/virl:node[5]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[4]"/>
 </topology>
