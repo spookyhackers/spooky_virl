@@ -9,7 +9,7 @@
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 09:00:02 UTC Sun Oct 22 2017
+! Last configuration change at 22:01:40 UTC Mon Oct 23 2017
 !
 version 15.2
 service timestamps debug datetime msec
@@ -17,7 +17,7 @@ service timestamps log datetime msec
 no service password-encryption
 service compress-config
 !
-hostname iosvl2-1
+hostname L2-1
 !
 boot-start-marker
 boot-end-marker
@@ -92,6 +92,8 @@ interface GigabitEthernet0/3
  negotiation auto
 !
 interface GigabitEthernet1/0
+ switchport access vlan 2
+ switchport mode access
  media-type rj45
  negotiation auto
 !
@@ -161,7 +163,7 @@ end</entry>
             <entry key="AutoNetkit.mgmt_ip" type="string"></entry>
             <entry key="Auto-generate config" type="Boolean">false</entry>
             <entry key="config" type="String">!
-! Last configuration change at 09:00:02 UTC Sun Oct 22 2017
+! Last configuration change at 22:01:41 UTC Mon Oct 23 2017
 !
 version 15.2
 service timestamps debug datetime msec
@@ -250,7 +252,7 @@ interface GigabitEthernet0/3
 !
 interface GigabitEthernet1/0
  description host4_gi0_1
- switchport access vlan 3
+ switchport access vlan 2
  switchport mode access
  media-type rj45
  negotiation auto
@@ -316,10 +318,10 @@ end</entry>
         <interface id="2" name="GigabitEthernet0/3"/>
         <interface id="3" name="GigabitEthernet1/0"/>
     </node>
-    <node name="host1" type="SIMPLE" subtype="IOSvL2" location="308,73">
+    <node name="host1" type="SIMPLE" subtype="IOSvL2" location="308,97">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 09:00:03 UTC Sun Oct 22 2017
+! Last configuration change at 22:01:58 UTC Mon Oct 23 2017
 !
 version 15.2
 service timestamps debug datetime msec
@@ -350,6 +352,7 @@ no ipv6 cef
 !
 spanning-tree mode pvst
 spanning-tree extend system-id
+no spanning-tree vlan 1-4094
 !
 vlan internal allocation policy ascending
 !
@@ -374,14 +377,23 @@ interface GigabitEthernet0/0
  negotiation auto
 !
 interface GigabitEthernet0/1
+ switchport access vlan 2
+ switchport mode access
  media-type rj45
  negotiation auto
+!
+interface Vlan2
+ ip address 192.168.1.2 255.255.255.192
+ standby 1 ip 192.168.1.1
 !
 ip forward-protocol nd
 !
 no ip http server
 no ip http secure-server
 !
+ip route 192.168.0.2 255.255.255.255 192.168.1.3
+ip route 192.168.0.3 255.255.255.255 192.168.1.5
+ip route 192.168.0.4 255.255.255.255 192.168.1.6
 !
 !
 !
@@ -420,16 +432,17 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
         </extensions>
         <interface id="0" name="GigabitEthernet0/1"/>
     </node>
-    <node name="host2" type="SIMPLE" subtype="IOSvL2" location="308,333">
+    <node name="host2" type="SIMPLE" subtype="IOSvL2" location="309,359">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 09:00:04 UTC Sun Oct 22 2017
+! Last configuration change at 22:02:04 UTC Mon Oct 23 2017
 !
 version 15.2
 service timestamps debug datetime msec
@@ -437,7 +450,7 @@ service timestamps log datetime msec
 no service password-encryption
 service compress-config
 !
-hostname Switch
+hostname host2
 !
 boot-start-marker
 boot-end-marker
@@ -460,6 +473,7 @@ no ipv6 cef
 !
 spanning-tree mode pvst
 spanning-tree extend system-id
+no spanning-tree vlan 1-4094
 !
 vlan internal allocation policy ascending
 !
@@ -476,19 +490,33 @@ vlan internal allocation policy ascending
 !
 !
 !
+interface Loopback1
+ ip address 192.168.0.2 255.255.255.255
+!
 interface GigabitEthernet0/0
  media-type rj45
  negotiation auto
 !
 interface GigabitEthernet0/1
+ switchport access vlan 2
+ switchport mode access
  media-type rj45
  negotiation auto
+!
+interface Vlan2
+ ip address 192.168.1.3 255.255.255.192
+ standby 1 ip 192.168.1.1
+ standby 1 priority 91
+ standby 1 preempt
 !
 ip forward-protocol nd
 !
 no ip http server
 no ip http secure-server
 !
+ip route 192.168.0.1 255.255.255.255 192.168.1.2
+ip route 192.168.0.3 255.255.255.255 192.168.1.5
+ip route 192.168.0.4 255.255.255.255 192.168.1.6
 !
 !
 !
@@ -527,6 +555,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -536,7 +565,7 @@ end</entry>
     <node name="host3" type="SIMPLE" subtype="IOSvL2" location="674,79">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 09:00:05 UTC Sun Oct 22 2017
+! Last configuration change at 22:02:06 UTC Mon Oct 23 2017
 !
 version 15.2
 service timestamps debug datetime msec
@@ -544,7 +573,7 @@ service timestamps log datetime msec
 no service password-encryption
 service compress-config
 !
-hostname Switch
+hostname host3
 !
 boot-start-marker
 boot-end-marker
@@ -567,6 +596,7 @@ no ipv6 cef
 !
 spanning-tree mode pvst
 spanning-tree extend system-id
+no spanning-tree vlan 1-4094
 !
 vlan internal allocation policy ascending
 !
@@ -583,19 +613,31 @@ vlan internal allocation policy ascending
 !
 !
 !
+interface Loopback1
+ ip address 192.168.0.3 255.255.255.255
+!
 interface GigabitEthernet0/0
  media-type rj45
  negotiation auto
 !
 interface GigabitEthernet0/1
+ switchport access vlan 2
+ switchport mode access
  media-type rj45
  negotiation auto
+!
+interface Vlan2
+ ip address 192.168.1.5 255.255.255.192
+ standby 2 ip 192.168.1.4
 !
 ip forward-protocol nd
 !
 no ip http server
 no ip http secure-server
 !
+ip route 192.168.0.1 255.255.255.255 192.168.1.2
+ip route 192.168.0.2 255.255.255.255 192.168.1.3
+ip route 192.168.0.4 255.255.255.255 192.168.1.6
 !
 !
 !
@@ -634,6 +676,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
@@ -643,7 +686,7 @@ end</entry>
     <node name="host4" type="SIMPLE" subtype="IOSvL2" location="669,331">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 09:00:06 UTC Sun Oct 22 2017
+! Last configuration change at 22:02:00 UTC Mon Oct 23 2017
 !
 version 15.2
 service timestamps debug datetime msec
@@ -651,7 +694,7 @@ service timestamps log datetime msec
 no service password-encryption
 service compress-config
 !
-hostname Switch
+hostname host4
 !
 boot-start-marker
 boot-end-marker
@@ -674,6 +717,7 @@ no ipv6 cef
 !
 spanning-tree mode pvst
 spanning-tree extend system-id
+no spanning-tree vlan 1-4094
 !
 vlan internal allocation policy ascending
 !
@@ -690,19 +734,33 @@ vlan internal allocation policy ascending
 !
 !
 !
+interface Loopback1
+ ip address 192.168.0.4 255.255.255.255
+!
 interface GigabitEthernet0/0
  media-type rj45
  negotiation auto
 !
 interface GigabitEthernet0/1
+ switchport access vlan 2
+ switchport mode access
  media-type rj45
  negotiation auto
+!
+interface Vlan2
+ ip address 192.168.1.6 255.255.255.192
+ standby 2 ip 192.168.1.4
+ standby 2 priority 91
+ standby 2 preempt
 !
 ip forward-protocol nd
 !
 no ip http server
 no ip http secure-server
 !
+ip route 192.168.0.1 255.255.255.255 192.168.1.2
+ip route 192.168.0.2 255.255.255.255 192.168.1.3
+ip route 192.168.0.3 255.255.255.255 192.168.1.5
 !
 !
 !
@@ -741,6 +799,7 @@ banner login `
 line con 0
 line aux 0
 line vty 0 4
+ login
 !
 !
 end</entry>
